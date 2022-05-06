@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/article#">
+  <meta charset='utf-8' />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <title> 連打測定 </title>
+  <meta name="author" content="Green0256">
+
+  <meta property="og:url" content="https://green0256.github.io/Rennda" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="連打速度の測定" />
+  <meta property="og:description" content="右手と左手の連打速度を測定できます！ レモン(ソウ)から頼まれたやつ。" />
+  <meta property="og:site_name" content="連打測定" />
+  <meta property="og:image" content="https://green0256.github.io/Rennda/Assets/Image/icon.png" />
+  
+  <meta name="description" content="右手と左手の連打速度を測定できます！ レモン(ソウ)から頼まれたやつ。">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/gh/phinajs/phina.js@v0.2.3/build/phina.js"></script>
+  
+  <script src="btn.js"> </script>
+  <script src="dialog.js"> </script>
+  <script src="main.js"> </script>
+
+  <script type="text/javascript">
+    // アセット
+    ASSETS = {
+      image: {
+        dialog: "./Assets/Image/dialog.png",
+        redBtn: "./Assets/Image/redBtn.png",
+        blueBtn: "./Assets/Image/blueBtn.png",
+      },
+      
+      font: {
+        CL: "./Assets/Font/Corporate-Logo-Rounded.ttf"
+      },
+    };
+    
+    /*
+     * メイン処理
+     */
+    phina.main(function() {
+      // アプリケーションを生成
+      var app = GameApp({
+         // titleScene から開始
+         startLabel: 'title',
+         title: "連打",
+         assets: ASSETS,
+         fps: 60
+      });
+    
+      app.enableStats();
+
+      // 実行
+      app.run();
+    
+    });
+    
+  </script>
+  
+</body>
+
+</html>
