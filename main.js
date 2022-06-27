@@ -38,21 +38,32 @@ phina.define("MainScene", {
     
     startDialog = Dialog("測定を開始", "OK を押すと右手の十秒間の測定が始まります", "左右を同時に測定する", "OK").addChildTo(this);
     startDialog.blueBtnFunc = function() { 
-      right.tap = true; 
-      limit = 10;
+      limit = 3;
+      window.setTimeout(function() {
+        right.tap = true; 
+        limit = 10;
+      },3100);
     };
     
     startDialog.redBtnFunc = function() {
-      right.tap = true;
-      left.tap = true;
-      limit = 10;
-      
-      sp = true;
+      limit = 3;
+      window.setTimeout(function() {
+        right.tap = true;
+        left.tap = true;
+        limit = 10;
+        
+        sp = true;
+      },3100);
     };
   },
   
   update: function(app) {
-    sLabel.text = "残り: " + limit.toFixed(1) + "秒";
+    if (right.tap == false && left.tap == false) {
+      sLabel.text = "開始まで: " + limit.toFixed(1) + "秒";
+    } else {
+      sLabel.text = "残り: " + limit.toFixed(1) + "秒";
+    };
+    
     if (sp == true && limit <= 0) {
       sp = false;
       limit = 999;
@@ -75,10 +86,14 @@ phina.define("MainScene", {
         
         m = "右手で10秒間に叩けた回数は " + right.count + "回でした！\nOKを押すと左手の計測が開始されます。"
         endDialog = Dialog("終了！", m, "", "ok").addChildTo(this);
-        
+
         endDialog.blueBtnFunc = function() {
-          left.tap = true;
-          limit = 10;
+          limit = 3;
+          
+          window.setTimeout(function() {
+            left.tap = true;
+            limit = 10;
+          },3100)
         };
       };
       
